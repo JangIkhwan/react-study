@@ -1,0 +1,14 @@
+.container{ 
+    border : 1px solid grey;
+    padding : 16px;
+    margin : 10px;
+}
+
+li > div{
+    display: flex; /* flex?? */
+    align-items : center; /* align-items?? */
+}
+
+button{
+    margin-left : 16px;
+}
