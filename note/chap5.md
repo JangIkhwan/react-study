@@ -69,31 +69,84 @@ export const Comp=()=>{
   
 
 ## 2. Styled JSX
-    컴포넌트 파일에서 CSS 스타일을 작성하는 방법이다. 자주 쓰이지는 않지만, 리액트 프레임워크인 Next.js에 내장된 라이브러리이다.
 
-    다음과 같이 모듈을 설치해야 한다.
+컴포넌트 파일에서 CSS 스타일을 작성하는 방법이다. 자주 쓰이지는 않지만, 리액트 프레임워크인 Next.js에 내장된 라이브러리이다.
+
+다음과 같이 모듈을 설치해야 한다.
 
 ```
 npm install styled-jsx
 ```
 
-스타일은 CSS-In-JS 방식으로 작성한다. return 이하를 Fragment로 감싸고, 그 안에 <style jsx> 태그를 추가한다. 스타일은 백쿼트 사이에 작성한다. 스타일을 적용할 태그에는 ClassName에 클래스명을 설정하면 된다.  
+스타일은 CSS-In-JS 방식으로 작성한다. return 이하를 Fragment로 감싸고, 그 안에 `<style jsx>` 태그를 추가한다. 스타일은 백쿼트 사이에 작성한다. 스타일을 적용할 태그에는 ClassName에 클래스명을 설정하면 된다. 
+
 ```jsx
-export const Comp = ()=>{
-    return(
-        <>
-            <p className="title">Comp</p>
-            <style jsx>{`
-            .title{
-                size : 100px;
-                color : red;
-            }
-            `}</style>
-        </>
-    );
-}
+
+    export const Comp = ()=>{
+        return(
+            <>
+                <p className="title">Comp</p>
+                <style jsx>{`
+                .title{
+                    size : 100px;
+                    color : red;
+                }
+                `}</style>
+            </>
+        );
+    }
 
 ```
+
 주의할 점
 - 기본적으로 scss 표기법을 사용할 수 없다. 별도의 라이브러리를 설치해야 한다.
 - 순수 리액트 프로젝트에 억지로 사용하는 것보다는 Next.js 프로젝트에 사용하는 것이 더 적절하다.
+
+
+## Styled Components
+
+ 스타일을 적용한 컴포넌트를 정의할 수 있다. CSS-in-JS 형식의 컴포넌트 파일에 CSS를 SCSS 작성법으로 작성할 수 있다. 인기 있는 방식 중 하나이다.
+
+ 다음과 같이 스타일이 적용된 컴포넌트를 정의한다. 다른 컴포넌트와 구분하기 위해서 Styled Components로 정의한 컴포넌트의 이름 앞에는 대문자 S를 적는다.
+
+```jsx
+
+import { styled } from "styled-component";
+
+export const StyledComponents = ()=>{
+    return (
+        <>
+        <SButton></SButton>
+        </>
+    );
+};
+
+const SButton = styled.jsx`
+    &:hover{
+        background-color : #aaa;
+        color : #fff;
+        cursor : pointer;
+    }
+`;
+
+```
+
+## Emotion
+
+여러 형식으로 CSS를 지정할 수 있는 CSS-in-JS 라이브러리이다.
+
+다음과 같이 styled JSX 방식으로 지정할 수 있다.
+
+```jsx
+/** @jsxImportSource @emotion/react */
+import { jsx, css } from "@emotion/react";
+
+export const Component = ()=>{
+    const style = css`
+        
+    `;
+}
+```
+
+## TailwindCSS
+
